@@ -1,0 +1,37 @@
+---
+
+- hosts: all
+  connection: ssh
+  gather_facts: true
+  become: yes
+
+  vars:
+    cis_level_1_exclusions:
+      - 3.3.2
+      - 3.3.3
+      - 3.4.2
+      - 3.4.3
+    cis_pass_max_days: 45
+    cis_umask_default: 027
+
+    cis_partition_dev_var_log: "/dev/VolGroup0/lv_var_log"
+    cis_partition_mnt_var_log: "/var/log"
+    cis_partition_fs_var_log: "xfs"
+
+    cis_partition_dev_var_log_audit: "/dev/VolGroup0/lv_var_log_audit"
+    cis_partition_mnt_var_log_audit: "/var/log/audit"
+    cis_partition_fs_var_log_audit: "xfs"
+
+    cis_partition_dev_home: "/dev/VolGroup0/lv_home"
+    cis_partition_mnt_home: "/home"
+    cis_partition_fs_home: "xfs"
+
+    cis_partition_dev_var: "/dev/VolGroup0/lv_var"
+    cis_partition_mnt_var: "/var"
+    cis_partition_fs_var: "xfs"
+
+    cis_rsyslog_remote_loghost_address: 10.0.1.92
+    cis_rsyslog_accept_remote_messages: true
+
+  roles:
+    - ansible-cis-amazon-linux-2
