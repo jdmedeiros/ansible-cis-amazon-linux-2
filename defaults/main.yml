@@ -20,8 +20,8 @@ cis_level_2_exclusions: []
 # If false, a debug message will be generated instead, with the preface *** ACTION REQUIRED ***..
 fail_on_manual_remediation_actions: false  # True or false.
 
-cis_target_os_distribution: "Amazon"
-cis_target_os_versions: [ "(Karoo)", "-2" ]
+cis_target_os_distribution: "Amazon Linux 2"
+cis_target_os_versions: [ "(Karoo)" ]
 
 cis_modprobe_conf_filename: "/etc/modprobe.d/CIS.conf"
 cis_grub_bootloader_filename: "/boot/grub2/grub.cfg"
