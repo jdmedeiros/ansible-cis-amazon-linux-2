@@ -35,7 +35,12 @@
     cis_rsyslog_accept_remote_messages: true
 
   roles:
-    - { role: ansible-cis-amazon-linux-2,
-        in_vm: true,
-        full_upgrade: true
-    }
+        - { role: ansible-cis-amazon-linux-2,
+            in_vm: true,
+            cis_hosts_allowed_ip_range: '10.',
+            cis_umask_default: "027",
+            full_upgrade: true,
+            cis_enable_rsyslog: true,
+            cis_level_1_exclusions: [ 1.1.2, 3.3.2, 3.3.3, 3.4.2, 3.4.3],
+            cis_level_2_exclusions: [ ]
+        }
