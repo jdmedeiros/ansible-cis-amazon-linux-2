@@ -34,4 +34,7 @@
     cis_rsyslog_accept_remote_messages: true
 
   roles:
-    - ansible-cis-amazon-linux-2
+    - { role: ansible-cis-amazon-linux-2,
+        in_vm: true,
+        full_upgrade: true
+    }
