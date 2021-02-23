@@ -1,30 +1,18 @@
 # Standards: 0.11
 ---
 
-# 1.1.2 Ensure separate partition exists for /tmp (Scored)
+# 1.1.2 Ensure separate partition exists for /var (Scored)
 
-- name: 1.1.2 - Ensure separate partition exists for /tmp (Scored)
+- name: 1.1.2 - Ensure separate partition exists for /var (Scored)
   mount:
     name: "{{ item.mountpoint }}"
     state: present
     fstype: "{{item.fstype}}"
     src: "{{item.device}}"
-    opts: "{{item.opts}}"
   with_items:
-    - "{{ fs_mounts | selectattr('mountpoint', 'equalto', '/tmp') | list }}"
+    - { mountpoint: "{{cis_partition_mnt_var}}", device: "{{cis_partition_dev_var}}", fstype: "{{cis_partition_fs_var}}" }
   tags:
-      - level-1
-      - section-1
-      - "1.1.2"
-      - scored
-
-- name: 1.1.2 - Ensure the tmp.mount service is enabled for boot time auto-start
-  systemd:
-    name: tmp.mount
-    enabled: yes
-    masked: no
-  tags:
-      - level-1
-      - section-1
-      - "1.1.2"
-      - scored
+    - level-1
+    - section-1
+    - "1.1.2"
+    - scored
