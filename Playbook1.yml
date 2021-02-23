@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: 1.0.1.11
   connection: ssh
   gather_facts: true
   become: yes
